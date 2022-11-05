@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace SchedulR.Job;
+namespace SchedulR.Jobs;
 
 [DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
 internal class ActionJob : IJob

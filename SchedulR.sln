@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Job", "Job\Job.csproj", "{B8AF219D-4A52-4FF1-AC66-2C31939D026E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Job", "Jobs\Job.csproj", "{B8AF219D-4A52-4FF1-AC66-2C31939D026E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Job.Test", "Job.Test\Job.Test.csproj", "{A99BE8BD-37F6-4009-8F13-7F5A19D555A2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Job.Test", "Jobs.Test\Job.Test.csproj", "{A99BE8BD-37F6-4009-8F13-7F5A19D555A2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{16626660-B393-4509-A394-EBD9BD7275DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleJobs", "Samples\SimpleJobs\SimpleJobs.csproj", "{406AB717-6F33-40ED-A942-2396837F93FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +28,12 @@ Global
 		{A99BE8BD-37F6-4009-8F13-7F5A19D555A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A99BE8BD-37F6-4009-8F13-7F5A19D555A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A99BE8BD-37F6-4009-8F13-7F5A19D555A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{406AB717-6F33-40ED-A942-2396837F93FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{406AB717-6F33-40ED-A942-2396837F93FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{406AB717-6F33-40ED-A942-2396837F93FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{406AB717-6F33-40ED-A942-2396837F93FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{406AB717-6F33-40ED-A942-2396837F93FD} = {16626660-B393-4509-A394-EBD9BD7275DD}
 	EndGlobalSection
 EndGlobal

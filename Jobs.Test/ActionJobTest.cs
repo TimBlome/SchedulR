@@ -1,7 +1,7 @@
-namespace SchedulR.Job.Test;
+namespace SchedulR.Jobs.Test;
 
 using FluentAssertions;
-using SchedulR.Job;
+using SchedulR.Jobs;
 
 public class ActionJobTest
 {

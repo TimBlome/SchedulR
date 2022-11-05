@@ -1,4 +1,4 @@
-namespace SchedulR.Job;
+namespace SchedulR.Jobs;
 
 public interface IJob {
     Guid Id { get; set; }
