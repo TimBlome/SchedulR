@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Jobs\Job.csproj" />
+    <ProjectReference Include="..\..\SchedulR\Jobs\Job.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
