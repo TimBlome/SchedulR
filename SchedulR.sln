@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Job", "Jobs\Job.csproj", "{B8AF219D-4A52-4FF1-AC66-2C31939D026E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Job", "SchedulR\Jobs\Job.csproj", "{B8AF219D-4A52-4FF1-AC66-2C31939D026E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Job.Test", "Jobs.Test\Job.Test.csproj", "{A99BE8BD-37F6-4009-8F13-7F5A19D555A2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Job.Test", "SchedulR\Jobs.Test\Job.Test.csproj", "{A99BE8BD-37F6-4009-8F13-7F5A19D555A2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{16626660-B393-4509-A394-EBD9BD7275DD}"
 EndProject
