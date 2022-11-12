@@ -1,5 +1,6 @@
 using System.Collections.Concurrent;
 using Cronos;
+using Microsoft.Extensions.Logging;
 using SchedulR.Jobs;
 using SchedulR.Jobs.Execution;
 
@@ -8,25 +9,32 @@ namespace Jobs.Execution
     public class Executor
     {
         private readonly ConcurrentDictionary<Guid, ExecutionJob> _jobs = new();
-        public Executor()
+        private readonly ILogger<Executor> logger;
+
+        public Executor(ILogger<Executor> logger)
         {
-            
+            this.logger = logger;
         }
 
         public async Task Run(CancellationToken cancellationToken){
 
+            logger.LogInformation("Starting execution of scheduled jobs");
             while(!cancellationToken.IsCancellationRequested){
                 var executeJobsBefore = DateTime.UtcNow;
                 var nextExecutions = _jobs.Where(job => job.Value.NextExecution < executeJobsBefore).ToList();
-
+                
                 await Parallel.ForEachAsync(nextExecutions, async (job, cancellationToken) => {
+                    logger.LogInformation("Beginning execution of {jobId}[{jobName}]", job.Key, job.Value.Job.Name);
                     job.Value.Job.Perform(new JobExecutionInfo(null, null));
-                    job.Value.CalculateNewNextExecution();
-                    await Task.Delay(5000, cancellationToken);
+                    var nextExecutionJob = job.Value.CalculateNewNextExecution();
+                    _jobs[job.Key] = nextExecutionJob;
+                    var jobToLog = job.Value.Job;
+                    logger.LogInformation("Finished execution of {jobId}[{jobName}]. Next execution is at {nextExecution}", jobToLog.Id, jobToLog.Name, nextExecutionJob.NextExecution);
                 });
 
                 await Task.Delay(500);
             }
+            logger.LogInformation("Execution terminated");
         }
 
         public void RegisterJob(IJob job, CronExpression cron){
@@ -34,7 +42,7 @@ namespace Jobs.Execution
             _jobs.TryAdd(job.Id, new ExecutionJob(job, cron));
         }
 
-        struct ExecutionJob{
+        record struct ExecutionJob{
 
             public ExecutionJob(IJob job, CronExpression cron)
             {
@@ -46,10 +54,10 @@ namespace Jobs.Execution
             public readonly IJob Job {get; init;}
             public readonly CronExpression Cron {get; init;}
 
-            public DateTime? NextExecution {get; private set;}
+            public readonly DateTime? NextExecution {get; init;}
 
-            public void CalculateNewNextExecution(){
-                NextExecution = Cron.GetNextOccurrence(DateTime.UtcNow);
+            public ExecutionJob CalculateNewNextExecution(){
+                return this with {NextExecution = Cron.GetNextOccurrence(DateTime.UtcNow)};
             }
         }
     }

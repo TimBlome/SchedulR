@@ -16,6 +16,7 @@ internal class ActionJob : IJob
         }
         Name = name;
         this.performAction = performAction ?? throw new ArgumentNullException(nameof(performAction));
+        Id = Guid.NewGuid();
     }
     public Guid Id { get; set; }
     public string Name { get; set; }
